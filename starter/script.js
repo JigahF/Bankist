@@ -82,6 +82,20 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+// const user = 'Steven Thomas Williams'; //stw
+
+console.log(createUsernames('Steven Thomas Williams'));
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -224,6 +238,7 @@ checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 
 */
 
+/*
 const eurToUsd = 1.1;
 
 // const movementsUSD = movements.map(function (mov) {
@@ -241,14 +256,16 @@ for (const movement of movements) {
 
 console.log(movementsUSDfor);
 
-const movementsDescp = movements.map((mov, i, arr) =>
-  `Mov ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`;
+const movementsDescp = movements.map(
+  (mov, i) =>
+    `Mov ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
 
-//   if (mov > 0) {
-//     return `Mov ${i + 1}: You deposited ${mov}`;
-//   } else {
-//     return `Mov ${i + 1}: You withdrew ${Math.abs(mov)}`;
-//   }
-});
+  //   if (mov > 0) {
+  //     return `Mov ${i + 1}: You deposited ${mov}`;
+  //   } else {
+  //     return `Mov ${i + 1}: You withdrew ${Math.abs(mov)}`;
+  //   }
+);
 
 console.log(movementsDescp);
+*/
