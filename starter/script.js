@@ -83,6 +83,13 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -93,9 +100,8 @@ const createUsernames = function (accs) {
   });
 };
 
-// const user = 'Steven Thomas Williams'; //stw
+createUsernames(accounts);
 
-console.log(createUsernames('Steven Thomas Williams'));
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -269,3 +275,67 @@ const movementsDescp = movements.map(
 
 console.log(movementsDescp);
 */
+
+/*
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const depositsfor = [];
+for (const mov of movements)
+  if (mov > 0) {
+    depositsfor.push(mov);
+  }
+console.log(depositsfor);
+
+const withdrawals = movements.filter(mov => {
+  return mov < 0;
+});
+console.log(withdrawals);
+*/
+
+console.log(movements);
+
+// accumlator => SNOWBALL
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i} : ${acc} `);
+//   return acc + cur;
+// }, 0);
+
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// Maximum Value
+const max = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+);
+console.log(max);
+
+////////////////////////////////////
+// Coding Challenge #2
+let dogToHumanAge;
+const calcAverageHumanAge = function (ages) {
+  dogToHumanAge = ages.map(dogAge =>
+    dogAge <= 2
+      ? (dogToHumanAge = 2 * dogAge)
+      : (dogToHumanAge = 16 + dogAge * 4)
+  );
+  console.log(dogToHumanAge);
+
+  const aboveEighteen = dogToHumanAge.filter(age => age >= 18);
+  console.log(aboveEighteen);
+
+  const sumHumanAge = aboveEighteen.reduce((acc, mov, i) => acc + mov, 0);
+  const avgHumanAge = sumHumanAge / aboveEighteen.length;
+  console.log(avgHumanAge);
+};
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]); 
